@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import   {useState, useEffect} from 'react';
 import './App.css';
+ 
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [loadMore, setLoadMore] = useState('https://swapi.dev/api/people/1/')
+  const [input, setInput] = useState(1)
 
-export default App;
+  const getAllSw = async () => {
+    axios.get(loadMore)
+      .then(function ({data}) {
+      console.log(data.name)
+    })
+
+ 
+  }
+
+    useEffect(() => {
+        getAllSw()
+    }, [])
+
+  return (
+    <div className="container">
+      <h1>StarWars Api</h1>
+      
+      <input type="text" className="input" value={input}/>
+
+      <div className='box'>
+        d
+      </div>
+      <div>
+        <button className="button">information</button>
+      </div >
+    </div>
+  )
+
+}
+  export default App;
+
