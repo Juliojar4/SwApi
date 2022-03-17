@@ -1,40 +1,45 @@
+
+import {useState, useEffect} from 'react';
+import './App.css'
+
 import axios from 'axios';
-import   {useState, useEffect} from 'react';
-import './App.css';
- 
+
+import AllPeople from './components/getAllPeoples'
 
 function App() {
-  const [loadMore, setLoadMore] = useState('https://swapi.dev/api/people/1/')
-  const [input, setInput] = useState(1)
+  
+  const [allPeople, setAllPeople] = useState([])
 
-  const getAllSw = async () => {
-    axios.get(loadMore)
-      .then(function ({data}) {
-      console.log(data.name)
-    })
-
- 
-  }
-
-    useEffect(() => {
-        getAllSw()
+    
+  useEffect(() => {
+    async function fetchPeoples() {
+      let res = await fetch('https://swapi.dev/api/people/?format=json')
+      let data = await res.json()
+      setAllPeople(data.results)
+    }
+    fetchPeoples()   
     }, [])
 
-  return (
-    <div className="container">
-      <h1>StarWars Api</h1>
-      
-      <input type="text" className="input" value={input}/>
+  console.log(allPeople)
 
+  return (
+
+    <div className="container">
+      <h1>StarWars Api</h1>    
       <div className='box'>
-        d
+        <ul>
+          {allPeople.map((people, index) => 
+            <AllPeople
+              key={index}
+              name={people.name}
+              gender={people.gender}
+            />
+          )}
+        </ul>
       </div>
-      <div>
-        <button className="button">information</button>
-      </div >
+       
     </div>
   )
 
 }
   export default App;
-
