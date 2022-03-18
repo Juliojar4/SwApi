@@ -2,43 +2,28 @@
 import {useState, useEffect} from 'react';
 import './App.css'
 
-import axios from 'axios';
-
 import AllPeople from './components/getAllPeoples'
+import { IoPlanetSharp } from "react-icons/io5";
+import { GiLightSabers } from "react-icons/gi";
+import { GiInterceptorShip } from "react-icons/gi";
+import { Link } from "react-router-dom";
+
 
 function App() {
   
-  const [allPeople, setAllPeople] = useState([])
 
-    
-  useEffect(() => {
-    async function fetchPeoples() {
-      let res = await fetch('https://swapi.dev/api/people/?format=json')
-      let data = await res.json()
-      setAllPeople(data.results)
-    }
-    fetchPeoples()   
-    }, [])
+ return (
 
-  console.log(allPeople)
-
-  return (
-
-    <div className="container">
-      <h1>StarWars Api</h1>    
-      <div className='box'>
-        <ul>
-          {allPeople.map((people, index) => 
-            <AllPeople
-              key={index}
-              name={people.name}
-              gender={people.gender}
-            />
-          )}
-        </ul>
+      <div className="container">
+        <h1>StarWars Api</h1>    
+        <div className='box'>
+          <ul>
+          <Link to="allPeople"><li><GiLightSabers /></li></Link>
+          <Link to="allPlanets"><li><IoPlanetSharp /></li></Link>
+          <Link to="allShips"><li><GiInterceptorShip /></li></Link>
+          </ul>  
+        </div>
       </div>
-       
-    </div>
   )
 
 }

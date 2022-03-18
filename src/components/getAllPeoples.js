@@ -9,6 +9,7 @@ const PokemonThumb = ({ gender,name}) => {
                 <h3>{name}</h3>
                 <h3>{gender}</h3>
             </div>
+            <button>Read More</button>
         </div>
     )
 }

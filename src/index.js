@@ -3,11 +3,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+import AllPeople from './views/allPeople/allPeople'
+import AllPlanets from './views/allPlanets/allPlanets'
+import AllShips from './views/allShips/allShips'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="allPeople" element={<AllPeople />} />
+      <Route path="allPlanets" element={<AllPlanets />} />
+      <Route path="allShips" element={<AllShips />} />
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
