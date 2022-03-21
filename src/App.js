@@ -1,8 +1,6 @@
 
-import {useState, useEffect} from 'react';
 import './App.css'
 
-import AllPeople from './components/getAllPeoples'
 import { IoPlanetSharp } from "react-icons/io5";
 import { GiLightSabers } from "react-icons/gi";
 import { GiInterceptorShip } from "react-icons/gi";
@@ -20,7 +18,7 @@ function App() {
           <ul>
           <Link to="allPeople"><li><GiLightSabers /></li></Link>
           <Link to="allPlanets"><li><IoPlanetSharp /></li></Link>
-          <Link to="allShips"><li><GiInterceptorShip /></li></Link>
+          <Link to="allShips" className="Ships"><li><GiInterceptorShip /></li></Link>
           </ul>  
         </div>
       </div>

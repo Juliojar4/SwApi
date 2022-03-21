@@ -1,7 +1,7 @@
  
 
 body{
-  background-image: url(./img/SwApiDashboard.jpeg);
+  background-image: url(./img/bkES.jpeg);
 }
 
 .container{
@@ -29,12 +29,20 @@ ul{
   text-decoration:none
 }
 li{
-  font-size:4em;
+  font-size:13em;
   margin: 70px;
   text-decoration:none;
   list-style-type: none;
-  color:black;
+  color:dodgerblue;
 }
+
+li:hover{
+    -webkit-transform: rotateZ(-30deg);
+    -ms-transform: rotateZ(-30deg);
+    transform: rotateZ(-30deg);
+    transition:0.7s;
+}
+
 
 .detail-wrapper{
   font-size: 30px;

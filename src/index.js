@@ -9,9 +9,10 @@ import {
   Route,
 } from "react-router-dom";
 
-import AllPeople from './views/allPeople/allPeople'
-import AllPlanets from './views/allPlanets/allPlanets'
-import AllShips from './views/allShips/allShips'
+import AllPeople from './views/getAll/allPeople'
+import AllPlanets from './views/getAll/allPlanets'
+import AllShips from './views/getAll/allShips'
+import ShowPerson from './views/showAll/showPerson'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="allPeople" element={<AllPeople />} />
       <Route path="allPlanets" element={<AllPlanets />} />
       <Route path="allShips" element={<AllShips />} />
+      <Route path="/allPeople/showPerson" element={<ShowPerson />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
