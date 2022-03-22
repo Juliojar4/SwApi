@@ -7,12 +7,20 @@ export default function Example() {
     const [allShips, setAllShips] = useState([]);
 
     useEffect(() => {
-        async function fetchShips() {
-        let res = await fetch('https://swapi.dev/api/starships/?format=json')
-        let data = await res.json()
-        setAllShips(data.results)
+        let unmounted = false
+       
+            async function fetchShips() {
+                if (!unmounted) {
+                    let res = await fetch('https://swapi.dev/api/starships/?format=json')
+                    let data = await res.json()
+                    setAllShips(data.results)
+                }
+            }
+            fetchShips()
+        
+        return () => {
+            unmounted = true
         }
-        fetchShips()   
         }, [])
 
     console.log(allShips)

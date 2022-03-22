@@ -6,7 +6,7 @@ import React from 'react'
 export default function showPerson() {
     return (
         <div>
-           estaou aqui
+           e ela ta ta movimentando ta ta movimentando  
         </div>
     )
 }

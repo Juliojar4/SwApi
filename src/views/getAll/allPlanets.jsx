@@ -6,18 +6,24 @@ import RenderAllPlanets from '../../components/getAll/getAllPlanets'
 export default function Example() {
     const [allPlanets, setAllPlanets] = useState([]);
 
-    useEffect(() => {
-        async function fetchPlanets() {
-        let res = await fetch('https://swapi.dev/api/planets/?format=json')
-        let data = await res.json()
-        setAllPlanets(data.results)
+   useEffect(() => {
+        let unmounted = false
+       
+            async function fetchPlanets() {
+                if (!unmounted) {
+                    let res = await fetch('https://swapi.dev/api/planets/?format=json')
+                    let data = await res.json()
+                    setAllPlanets(data.results)
+                }
+            }
+            fetchPlanets()
+        
+        return () => {
+            unmounted = true
         }
-        fetchPlanets()   
         }, [])
 
     console.log(allPlanets)
-
-
 
     return (
     <div className='Container'>
