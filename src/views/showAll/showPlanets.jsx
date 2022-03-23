@@ -1,11 +1,10 @@
- 
 import React, {useState,useEffect} from 'react'
  
-import ShowAllPerson from '../../components/showAll/showAllPerson'
+import ShowAllPlanets from '../../components/showAll/showAllPlanets'
 
 function ShowPerson() {
 
-    const[person, setPerson] = useState([]);
+    const[planets, setPlanets] = useState([]);
 
     useEffect(() => {
         const url = window.location.href
@@ -16,10 +15,9 @@ function ShowPerson() {
        
             async function fetchPeople() {
                 if (!unmounted) {
-                    let res = await fetch(`https://swapi.dev/api/people/${Number(param[1])}`)
+                    let res = await fetch(`https://swapi.dev/api/planets/${param[1]}`)
                     let data = await res.json()
-                    setPerson(data)
-                    
+                    setPlanets(data)   
                 }
             }
             fetchPeople()
@@ -32,11 +30,13 @@ function ShowPerson() {
     return (
         <div>
             <div>
-          <ShowAllPerson
-            name={person.name}
-            height={person.height}
-            mass={person.mass}
-            skin_color={person.skin_color}    
+          <ShowAllPlanets
+            name={planets.name}
+            rotation_period={planets.rotation_period}
+            climate={planets.climate}
+            gravity={planets.gravity}   
+            terrain={planets.terrain}
+            population={planets.population}        
           />
             </div>
         </div>

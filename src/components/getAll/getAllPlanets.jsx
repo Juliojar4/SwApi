@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
-const RenderAllPlanets = ({name}) => {
+const RenderAllPlanets = ({name, i}) => {
 
     return (    
         <div className="Container">
             <div className="Conteudo">
                 <h3>{name}</h3>
-                <button>Read More</button>
+                <button><Link to={`paramQ${i}`}>Read More</Link></button>
             </div>
         </div>
     )

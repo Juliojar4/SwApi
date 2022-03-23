@@ -1,7 +1,7 @@
 import '../css/pages.css'
 import React, { useState, useEffect } from 'react'
 import RenderAllShips from '../../components/getAll/getAllShips'
-
+import { Link } from "react-router-dom";
 
 export default function Example() {
     const [allShips, setAllShips] = useState([]);
@@ -29,12 +29,13 @@ export default function Example() {
 
     return (
     <div className='Container'>
-        <h2>Ships</h2>
+        <Link to={`/`}><h2>Ships</h2></Link>
             <div className='Conteudo'>
          {allShips.map((ships, index) => 
             <RenderAllShips
             key={index}
             name={ships.name}
+            i = {index + 1}     
             />
         )} 
         </div> 

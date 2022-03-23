@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-const RenderAllPeople = ({name, height}) => {
+const RenderAllPeople = ({name,i }) => {
 
     return (    
         <div className="Container">
             <div className="Conteudo">
                 <h3>{name}</h3>
-                <button><Link to={`${`index`}`}>Read More</Link></button>
+                <button><Link to={`paramQ${i}`}>Read More</Link></button>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import '../css/pages.css'
 import React, { useState, useEffect } from 'react'
 import GetAllPeople from '../../components/getAll/getAllPeoples'
-
+import { Link } from "react-router-dom";
 
 function RenderAllPeople() {
   const [allPeople, setAllPeople] = useState([]);
@@ -26,14 +26,15 @@ function RenderAllPeople() {
 
   return (
     <div className='Container'>
-      <h2>Characters</h2>
+      <Link to={`/`}><h2>People</h2></Link>
+
       <div className='Conteudo'>
         {allPeople.map((people, i) => 
           <GetAllPeople
             key={i}
             name={people.name}
             height={people.height}
-            chave={i}
+            i = {i + 1}
           />
       )}
       </div> 
