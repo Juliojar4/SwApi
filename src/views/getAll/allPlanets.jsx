@@ -1,7 +1,9 @@
-import '../css/pages.css'
+import '../../styles/css/styleComponets/pages.css'
 import React, { useState, useEffect } from 'react'
 import RenderAllPlanets from '../../components/getAll/getAllPlanets'
- 
+import { AiFillHome } from "react-icons/ai";
+import { Link } from "react-router-dom";
+
 
 export default function Example() {
     const [allPlanets, setAllPlanets] = useState([]);
@@ -28,19 +30,20 @@ export default function Example() {
 
     return (
     <div>
-            <div className='Container'>
-                   <h2>Planets</h2>
-            <div className='Conteudo'>
-         {allPlanets.map((planets, index) => 
-            <RenderAllPlanets
-            key={index}
-            name={planets.name}
-            i = {index + 1}    
-            />
-        )} 
-            </div> 
+        <nav>
+            <Link to={`/`} className="link"><AiFillHome className="Home"/></Link>
+        </nav>
+        <div className="Titulo">
+            <h2>Planets</h2>
         </div>
-    </div>
+            {allPlanets.map((planets, index) => 
+                <RenderAllPlanets
+                key={index}
+                name={planets.name}
+                i = {index + 1}    
+                />
+            )} 
+                </div> 
     )
 }
 

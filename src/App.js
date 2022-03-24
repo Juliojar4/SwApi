@@ -1,5 +1,5 @@
 
-import './App.css'
+import '../src/styles/css/styleIndex/App.css'
 
 import { IoPlanetSharp } from "react-icons/io5";
 import { GiLightSabers } from "react-icons/gi";
@@ -9,9 +9,7 @@ import { Link } from "react-router-dom";
 
 function App() {
   
-
  return (
-
       <div className="container">
         <h1>StarWars Api</h1>    
         <div className='box'>

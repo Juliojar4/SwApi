@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+}
+
+nav {
+    color:chocolate;
+    margin-top: 40px;
+    margin-left: 40px;
+    font-size: 2em;
+}
+
+.Titulo{
+    display: flex;
+    justify-content:center;
+    color:cornflowerblue;
+    margin-right: 30px;
+    margin-bottom: 50px;
+    font-size: 2em;
+}
+
+Link {
+      text-decoration:none;
+  list-style-type: none;
+}
+
+
+ 

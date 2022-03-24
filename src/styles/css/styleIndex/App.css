@@ -1,26 +1,27 @@
  
 
 body{
-  background-image: url(./img/bkES.jpeg);
+  background-image: url(../../img/bkES.jpeg);
 }
 
 .container{
-
   display: flex;
   flex-direction: column;
-
+  align-items: center;
 }
 
 h1 {  
   display: flex;
   justify-content: center;
   font-size: 100px;
-  color:darkkhaki
+  color:darkkhaki;
+  margin-top: 50px;
 }
 
 .box {
   display: flex;
   justify-content:center;
+
 }
 
 ul{
@@ -34,6 +35,7 @@ li{
   text-decoration:none;
   list-style-type: none;
   color:dodgerblue;
+  margin-top: 175px;
 }
 
 li:hover{

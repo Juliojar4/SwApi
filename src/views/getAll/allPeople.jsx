@@ -1,6 +1,7 @@
-import '../css/pages.css'
+import '../../styles/css/styleComponets/pages.css'
 import React, { useState, useEffect } from 'react'
 import GetAllPeople from '../../components/getAll/getAllPeoples'
+import { AiFillHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 function RenderAllPeople() {
@@ -25,19 +26,21 @@ function RenderAllPeople() {
   console.log(allPeople)
 
   return (
-    <div className='Container'>
-      <Link to={`/`}><h2>People</h2></Link>
-
-      <div className='Conteudo'>
-        {allPeople.map((people, i) => 
-          <GetAllPeople
-            key={i}
-            name={people.name}
-            height={people.height}
-            i = {i + 1}
-          />
+    <div>
+      <nav>
+        <Link to={`/`} className="link"><AiFillHome className="Home"/></Link>
+      </nav>
+      <div className="Titulo">
+        <h2>Characters</h2>
+      </div>
+          {allPeople.map((people, i) => 
+            <GetAllPeople
+              key={i}
+              name={people.name}
+              i = {i + 1}
+            />
       )}
-      </div> 
+
     </div>
   )
 }

@@ -2,6 +2,8 @@
 import React, {useState,useEffect} from 'react'
  
 import ShowAllPerson from '../../components/showAll/showAllPerson'
+import { AiFillHome } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function ShowPerson() {
 
@@ -16,7 +18,7 @@ function ShowPerson() {
        
             async function fetchPeople() {
                 if (!unmounted) {
-                    let res = await fetch(`https://swapi.dev/api/people/${Number(param[1])}`)
+                    let res = await fetch(`https://swapi.dev/api/people/${param[1]}`)
                     let data = await res.json()
                     setPerson(data)
                     
@@ -31,6 +33,10 @@ function ShowPerson() {
          
     return (
         <div>
+      <nav>
+        <Link to={`/`} className="link"><AiFillHome className="Home"/></Link>
+        <Link to={`/`} className="link"><AiFillHome className="Home"/></Link>
+      </nav>
             <div>
           <ShowAllPerson
             name={person.name}
