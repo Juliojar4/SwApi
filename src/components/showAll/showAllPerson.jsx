@@ -1,15 +1,20 @@
 import React from 'react'
 import '../../styles/css/styleComponets/showAll.css'
 
-const RenderAllPeople = ({name, height, mass, skin_color}) => {
+const RenderAllPeople = ({name, height, mass, skin_color,gender,birth_year,planets }) => {
 
     return (    
         <div className="Show-Container">
                 <h1>{name}</h1>
             <div className="Show-Conteudo">
-                <h3>Height:{height}</h3>
-                <h3>Mass:{mass}</h3>
-                <h3>skin color:{skin_color}</h3>
+                <ul>
+                    <li className="Particularity">Height: {height}</li>
+                    <li className="Particularity">Mass: {mass}</li>
+                    <li className="Particularity">Skin color: {skin_color}</li>
+                    <li className="Particularity">Gender: {gender}</li>
+                    <li className="Particularity">Birth Year: {birth_year}</li>
+                    <li className="Particularity">HomeWorld: {planets}</li>
+                </ul>
             </div>
         </div>
     )

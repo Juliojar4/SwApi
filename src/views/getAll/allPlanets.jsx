@@ -1,22 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import '../../styles/css/styleComponets/pages.css'
 import React, { useState, useEffect } from 'react'
 import RenderAllPlanets from '../../components/getAll/getAllPlanets'
 import { AiFillHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
-
+import useFullPageLoader from '../../components/hooks/useFullPageLoader'
 
 export default function Example() {
     const [allPlanets, setAllPlanets] = useState([]);
-
+    const [loader, showLoader, hideLoader] = useFullPageLoader()
+    
    useEffect(() => {
         let unmounted = false
        
-            async function fetchPlanets() {
+       async function fetchPlanets() {
                 if (!unmounted) {
-                    let res = await fetch('https://swapi.dev/api/planets/?format=json')
-                    let data = await res.json()
-                    setAllPlanets(data.results)
-                    console.log(data)
+                  showLoader()
+                  fetch('https://swapi.dev/api/people/?format=json')
+                  .then(response => response.json())
+                    .then(json => {
+                      hideLoader()
+                      setAllPlanets(json.results)
+                  })
                 }
             }
             fetchPlanets()
@@ -43,7 +48,8 @@ export default function Example() {
                 i = {index + 1}    
                 />
             )} 
-                </div> 
+            {loader}
+        </div> 
     )
 }
 

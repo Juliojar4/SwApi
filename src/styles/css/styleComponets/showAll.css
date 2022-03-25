@@ -1,7 +1,23 @@
+.Home {
+    margin-right: 50px;
+}
+
 h1 {
     font-size: 5em;
+    padding-bottom: 70px;
 }
 
 .Show-Conteudo {
-    color: chocolate;
+    display: flex;
+    font-size:1.7em;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 410px;
+    color: #FFE81F;
+    font-size:2.2em;
+}
+
+.Particularity {
+    list-style-type:none;
+    margin-bottom: 12px;
 }

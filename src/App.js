@@ -12,11 +12,11 @@ function App() {
  return (
       <div className="container">
         <h1>StarWars Api</h1>    
-        <div className='box'>
-          <ul>
-          <Link to="allPeople"><li><GiLightSabers /></li></Link>
-          <Link to="allPlanets"><li><IoPlanetSharp /></li></Link>
-          <Link to="allShips" className="Ships"><li><GiInterceptorShip /></li></Link>
+        <div className='Box'>
+          <ul className="Icons">
+            <Link to="allPeople"><li className='Links'><GiLightSabers /></li></Link>
+            <Link to="allPlanets"><li className='Links'><IoPlanetSharp /></li></Link>
+            <Link to="allShips" className="Ships"><li className='Links'><GiInterceptorShip /></li></Link>
           </ul>  
         </div>
       </div>

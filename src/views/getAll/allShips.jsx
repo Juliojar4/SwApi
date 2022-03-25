@@ -1,21 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import '../../styles/css/styleComponets/pages.css'
 import React, { useState, useEffect } from 'react'
 import RenderAllShips from '../../components/getAll/getAllShips'
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
-
+import useFullPageLoader from '../../components/hooks/useFullPageLoader'
 
 export default function Example() {
     const [allShips, setAllShips] = useState([]);
+    const [loader, showLoader, hideLoader] = useFullPageLoader()
 
     useEffect(() => {
         let unmounted = false
        
-            async function fetchShips() {
+       async function fetchShips() {
                 if (!unmounted) {
-                    let res = await fetch('https://swapi.dev/api/starships/?format=json')
-                    let data = await res.json()
-                    setAllShips(data.results)
+                  showLoader()
+                  fetch('https://swapi.dev/api/starships/?format=json')
+                  .then(response => response.json())
+                    .then(json => {
+                      hideLoader()
+                      setAllShips(json.results)
+                  })
                 }
             }
             fetchShips()
@@ -42,8 +48,9 @@ export default function Example() {
             key={index}
             name={ships.name}
             i = {index + 1}     
-            />
+             />
         )}
+        {loader}    
     </div>
     )
 }

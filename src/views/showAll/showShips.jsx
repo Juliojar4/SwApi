@@ -1,6 +1,9 @@
 import React, {useState,useEffect} from 'react'
  
 import ShowAllShips from '../../components/showAll/showAllShips'
+import { Link } from "react-router-dom";
+import { AiFillHome } from "react-icons/ai";
+import { GiInterceptorShip } from "react-icons/gi";
 
 function ShowShips() {
 
@@ -30,15 +33,19 @@ function ShowShips() {
          
     return (
         <div>
+      <nav>
+        <Link to={`/`} className="link"><AiFillHome className="Home"/></Link>
+        <Link to={`/allShips`} className="link"><GiInterceptorShip/></Link>
+      </nav>
             <div>
                 <ShowAllShips
                     name={ships.name}
+                    model={ships.model}
                     manufacturer={ships.manufacturer}
-                    length={ships.length}
                     cost_in_credits={ships.cost_in_credits}
-                    max_atmosphering_speed={ships.max_atmosphering_speed}
+                    length={ships.length}
                     starship_class={ships.starship_class}
-                    consumables={ships.consumables}
+                    passengers={ships.passengers}
                 />
             </div>
         </div>
