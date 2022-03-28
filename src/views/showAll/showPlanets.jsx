@@ -4,11 +4,12 @@ import ShowAllPlanets from '../../components/showAll/showAllPlanets'
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { IoPlanetSharp } from "react-icons/io5";
+import useFullPageLoader from '../../components/hooks/useFullPageLoader'
 
 function ShowPerson() {
 
     const[planets, setPlanets] = useState([]);
-
+    const [loader, showLoader, hideLoader] = useFullPageLoader()
     useEffect(() => {
         const url = window.location.href
         const param = url.split('Q')
@@ -18,9 +19,13 @@ function ShowPerson() {
        
             async function fetchPeople() {
                 if (!unmounted) {
-                    let res = await fetch(`https://swapi.dev/api/planets/${param[1]}`)
-                    let data = await res.json()
-                    setPlanets(data)   
+                  showLoader()
+                  fetch(`https://swapi.dev/api/planets/${param[1]}`)
+                  .then(response => response.json())
+                    .then(json => {
+                      hideLoader()
+                      setPlanets(json)
+                  })  
                 }
             }
             fetchPeople()
@@ -46,7 +51,8 @@ function ShowPerson() {
             population={planets.population}     
             terrain={planets.terrain}        
           />
-            </div>
+        </div>
+          {loader}
         </div>
   )
 }

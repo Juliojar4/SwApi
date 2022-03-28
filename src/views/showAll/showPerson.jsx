@@ -11,37 +11,45 @@ import useFullPageLoader from '../../components/hooks/useFullPageLoader'
 function ShowPerson() {
 
     const [person, setPerson] = useState([]);
-    // const [planets, setPlanets] = useState('');
+    const [planets, setPlanets] = useState('');
     const [loader, showLoader, hideLoader] = useFullPageLoader()
 
     useEffect(() => {
         const url = window.location.href
         const param = url.split('Q')
-       
 
         let unmounted = false
        
             async function fetchPeople() {
                 if (!unmounted) {
                   showLoader()
-                    fetch(`https://swapi.dev/api/people/${param[1]}`)
-                    .then(response => response.json())
-                      .then(json => {
-                .then(json => {
-                      hideLoader()
-                      setAllShips(json.results)
-                  })
-                }
-                      // setPlanets(json.results.homeworld)  
-                      })     
-                    // let pRes = await fetch(response.homeworld)
-                    // let pData = await pRes.json()
-                    // setPlanets(pData)
-                    // console.log(planets.name) 
+                  fetch(`https://swapi.dev/api/people/${param[1]}`)
+                  .then(response => response.json())
+                    .then(json => {
+                      setPerson(json)
+                  })  
                 }
             }
-        fetchPeople()
-          // console.log(planets)
+            fetchPeople()
+      
+                async function fetchPeoplePlanet() {
+                if (!unmounted) {
+                  showLoader()
+                  fetch(`https://swapi.dev/api/people/${param[1]}`)
+                  .then(response => response.json())
+                    .then(json => {
+                      fetch(json.homeworld)
+                        .then(response => response.json())
+                        .then(json => {
+                          hideLoader()
+                          setPlanets(json)  
+                          console.log(json.name)
+                        })
+                  })  
+                }
+            }
+            fetchPeoplePlanet()
+        
         return () => {
             unmounted = true
         }
@@ -61,11 +69,14 @@ function ShowPerson() {
             skin_color={person.skin_color}  
             gender={person.gender}
             birth_year={person.birth_year}
-            // planets={planets.name}
+            planets={planets.name}
           />
-            </div>
+        </div>
+        {loader}
         </div>
   )
+
 }
 
 export default ShowPerson
+

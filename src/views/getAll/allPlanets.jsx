@@ -5,6 +5,7 @@ import RenderAllPlanets from '../../components/getAll/getAllPlanets'
 import { AiFillHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import useFullPageLoader from '../../components/hooks/useFullPageLoader'
+import teste from '../showAll/teste'
 
 export default function Example() {
     const [allPlanets, setAllPlanets] = useState([]);

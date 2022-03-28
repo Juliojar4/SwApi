@@ -4,10 +4,13 @@ import ShowAllShips from '../../components/showAll/showAllShips'
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { GiInterceptorShip } from "react-icons/gi";
+import useFullPageLoader from '../../components/hooks/useFullPageLoader'
+import teste from './teste'
 
 function ShowShips() {
 
     const[ships, setShips] = useState([]);
+    const [loader, showLoader, hideLoader] = useFullPageLoader()
 
     useEffect(() => {
         const url = window.location.href
@@ -18,10 +21,13 @@ function ShowShips() {
        
             async function fetchPeople() {
                 if (!unmounted) {
-                    let res = await fetch(`https://swapi.dev/api/starships/${param[1]}/`)
-                    let data = await res.json()
-                    setShips(data)   
-                    console.log(param[1])
+                  showLoader()
+                  fetch(`https://swapi.dev/api/starships/${param[1]}`)
+                  .then(response => response.json())
+                    .then(json => {
+                      hideLoader()
+                      setShips(json)
+                  })  
                 }
             }
             fetchPeople()
@@ -48,6 +54,8 @@ function ShowShips() {
                     passengers={ships.passengers}
                 />
             </div>
+        
+            {loader}
         </div>
   )
 }
